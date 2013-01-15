@@ -1,0 +1,11 @@
+#!/bin/bash
+gpio export $1 in 
+value=`cat /sys/class/gpio/gpio$1/value`
+if(($value == "1"))
+then
+echo "open"
+else
+echo "closed"
+fi
+
+gpio unexport $1

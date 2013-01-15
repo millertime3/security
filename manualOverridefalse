@@ -1,0 +1,2 @@
+bash /home/pi/security/replaceConf manualOverride false
+bash /home/pi/security/manualAlarmCheck

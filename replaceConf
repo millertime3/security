@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -ie "s/$1=.*/$1=$2/g" /home/pi/security/security.conf

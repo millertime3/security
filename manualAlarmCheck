@@ -1,0 +1,16 @@
+#!/bin/bash
+function readConf {
+shopt -s extglob
+while IFS='= ' read lhs rhs
+do
+    if [[ $line != *( )#* ]]
+    then
+        # you can test for variables to accept or other conditions here
+        declare -g $lhs=$rhs
+    fi
+done < /home/pi/security/security.conf
+}
+
+readConf
+echo $manualOverride
+

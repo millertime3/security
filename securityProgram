@@ -1,0 +1,44 @@
+#!/bin/bash
+function readConf {
+shopt -s extglob
+while IFS='= ' read lhs rhs
+do
+    if [[ $line != *( )#* ]]
+    then
+        # you can test for variables to accept or other conditions here
+        declare -g $lhs=$rhs
+    fi
+done < /home/pi/security/security.conf
+}
+
+function checkStatus {
+if [ "$1" = "open" ]
+then
+sleep 5
+readConf
+alarm=`./checkHostStatus`
+if [ "$manualOverride" = "true" ] || [ "$manualOverride$alarm" = "autofalse" ] 
+then
+message="$2 is $1 and the alarm is on"
+echo $message
+./sendGtalk "$message"
+fi
+fi
+}
+
+#start of program
+while(true)
+do
+#checkStatus BackDoor
+backDoorStatus=`./checkStatusDoor 0`
+garageDoorStatus=`./checkStatusDoor 1`
+frontDoorStatus=`./checkStatusDoor 15`
+
+checkStatus $backDoorStatus "Back Door"
+checkStatus $garageDoorStatus "Garage Door"
+checkStatus $frontDoorStatus "Front Door"
+
+#sleep for a second
+sleep 2
+done
+

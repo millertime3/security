@@ -1,0 +1,9 @@
+shopt -s extglob
+while IFS='= ' read lhs rhs
+do
+    if [[ $line != *( )#* ]]
+    then
+        # you can test for variables to accept or other conditions here
+        declare -g $lhs=$rhs
+    fi
+done < security.conf
