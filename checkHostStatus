@@ -1,0 +1,23 @@
+#!/bin/bash
+function readConf {
+shopt -s extglob
+while IFS='= ' read lhs rhs
+do
+    if [[ $line != *( )#* ]]
+    then
+        # you can test for variables to accept or other conditions here
+        declare -g $lhs=$rhs
+    fi
+done < /home/pi/security/security.conf
+}
+
+
+readConf
+status=`ping -c 1 -w 1 $alarmActivationHosts`
+if grep -q " 0% packet loss.*" <(echo $status);
+then
+echo true
+else
+echo false
+
+fi
