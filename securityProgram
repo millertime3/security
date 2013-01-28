@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /home/pi/security/
 function readConf {
 shopt -s extglob
 while IFS='= ' read lhs rhs
@@ -8,7 +9,7 @@ do
         # you can test for variables to accept or other conditions here
         declare -g $lhs=$rhs
     fi
-done < /home/pi/security/security.conf
+done < security.conf
 }
 
 function checkStatus {
