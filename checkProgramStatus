@@ -1,0 +1,8 @@
+#!/bin/bash
+array=(`pidof -x $1`)
+if [ ${#array[*]} -gt 0 ]
+then
+echo "up"
+else
+echo "down"
+fi

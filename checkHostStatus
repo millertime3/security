@@ -13,11 +13,15 @@ done < /home/pi/security/security.conf
 
 
 readConf
-status=`ping -c 1 -w 1 $alarmActivationHosts`
+statusout=false;
+
+arr=$(echo $alarmActivationHosts | tr "," "\n")
+for x in $arr
+do
+status=`ping -c 1 -w 1 $x`
 if grep -q " 0% packet loss.*" <(echo $status);
 then
-echo true
-else
-echo false
-
+statusout=true
 fi
+done
+echo $statusout
