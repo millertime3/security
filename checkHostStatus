@@ -1,20 +1,7 @@
 #!/bin/bash
-function readConf {
-shopt -s extglob
-while IFS='= ' read lhs rhs
-do
-    if [[ $line != *( )#* ]]
-    then
-        # you can test for variables to accept or other conditions here
-        declare -g $lhs=$rhs
-    fi
-done < /home/pi/security/security.conf
-}
+alarmActivationHosts=android-749c6d221839e2bb,android-ce6957237c1facc8
 
-
-readConf
-statusout=false;
-
+statusout=false
 arr=$(echo $alarmActivationHosts | tr "," "\n")
 for x in $arr
 do

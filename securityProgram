@@ -16,24 +16,26 @@ function checkStatus {
 if [ "$1" = "open" ]
 then
 sleep 5
-readConf
 alarm=`./checkHostStatus`
+manualOverride=auto
 if [ "$manualOverride" = "true" ] || [ "$manualOverride$alarm" = "autofalse" ] 
 then
 message="$2 is $1 and the alarm is on"
 echo $message
+echo `date`
 ./sendGtalk "$message"
 fi
 fi
 }
 
 #start of program
+echo "Starting program " . `date`
 while(true)
 do
 #checkStatus BackDoor
-backDoorStatus=`./checkStatusDoor 1`
-garageDoorStatus=`./checkStatusDoor 15`
-frontDoorStatus=`./checkStatusDoor 0`
+backDoorStatus=`./checkStatusDoor 15`
+garageDoorStatus=`./checkStatusDoor 0`
+frontDoorStatus=`./checkStatusDoor 1`
 
 checkStatus $backDoorStatus "Back Door"
 checkStatus $garageDoorStatus "Garage Door"
