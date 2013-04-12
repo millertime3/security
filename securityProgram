@@ -30,6 +30,9 @@ fi
 
 #start of program
 echo "Starting program " . `date`
+gpio export 0 in
+gpio export 1 in
+gpio export 15 in
 while(true)
 do
 #checkStatus BackDoor

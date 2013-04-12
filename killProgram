@@ -1,0 +1,4 @@
+gpio unexport 0
+gpio unexport 1
+gpio unexport 15
+killall securityProgram
