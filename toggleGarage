@@ -1,0 +1,5 @@
+gpio export 0 out
+gpio -g write 0 1
+sleep .5
+gpio -g write 0 0
+gpio unexport 0
