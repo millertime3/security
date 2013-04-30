@@ -70,3 +70,9 @@ $.get($cmd,function($output) {
 $('#'+$id).html('<plaintext>'+$output);
 });
 }
+
+function toggleGarage() {
+$.get('http://garage/getCmd/garageToggleGarage.php',function(){
+alert('321');
+});
+}

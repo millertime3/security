@@ -143,6 +143,26 @@ echo buildLight(8,"Basement");
 echo buildLight(7,"Basement Stairs");
 ?>
                     </div>
+
+<div data-role="collapsible" >
+                        <h3>
+                            Garage
+                        </h3>
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup">
+                                <label >
+                                </label>
+                                <select  data-role="slider" onChange="toggleGarage()">
+                                    <option value="off">
+                                        toggle
+                                    </option>
+                                    <option value="on">
+                                        toggle
+                                    </option>
+                                </select>
+                            </fieldset>
+                        </div>
+</div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 #!/bin/bash
-alarmActivationHosts=android-749c6d221839e2bb,android-ce6957237c1facc8
+alarmActivationHosts=android-749c6d221839e2bb$,android-ce6957237c1facc8
 
 statusout=false
 arr=$(echo $alarmActivationHosts | tr "," "\n")
