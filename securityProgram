@@ -30,15 +30,15 @@ fi
 
 #start of program
 echo "Starting program " . `date`
-gpio export 0 in
-gpio export 1 in
-gpio export 15 in
+gpio export 17 in
+gpio export 21 in
+gpio export 18 in
 while(true)
 do
 #checkStatus BackDoor
-backDoorStatus=`./checkStatusDoor 15`
-garageDoorStatus=`./checkStatusDoor 0`
-frontDoorStatus=`./checkStatusDoor 1`
+backDoorStatus=`./checkStatusDoor 18`
+garageDoorStatus=`./checkStatusDoor 21`
+frontDoorStatus=`./checkStatusDoor 17`
 
 checkStatus $backDoorStatus "Back Door"
 checkStatus $garageDoorStatus "Garage Door"
