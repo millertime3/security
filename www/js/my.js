@@ -1,9 +1,9 @@
 // Put your custom code here
 $(document).ready(function() {
 readProgramStatus();
-checkDoorStatus('#r',15);
-checkDoorStatus('#r2',0);
-checkDoorStatus('#r3',1);
+checkDoorStatus('#r',17);
+checkDoorStatus('#r2',18);
+checkDoorStatus('#r3',21);
 });
 
 //define the values of the lights

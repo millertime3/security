@@ -13,9 +13,9 @@ done < security.conf
 }
 
 function checkStatus {
-if [ "$1" = "open" ]
+if [ "$1" = "closed" ]
 then
-sleep 5
+#sleep 2
 alarm=`./checkHostStatus`
 manualOverride=auto
 if [ "$manualOverride" = "true" ] || [ "$manualOverride$alarm" = "autofalse" ] 
@@ -23,28 +23,28 @@ then
 message="$2 is $1 and the alarm is on"
 echo $message
 echo `date`
-./sendGtalk "$message"
+./sendGtalk "$message" &
 fi
 fi
 }
 
 #start of program
 echo "Starting program " . `date`
-gpio export 17 in
-gpio export 21 in
-gpio export 18 in
+gpio export 22 in
+gpio export 23 in
+gpio export 24 in
 while(true)
 do
 #checkStatus BackDoor
-backDoorStatus=`./checkStatusDoor 18`
-garageDoorStatus=`./checkStatusDoor 21`
-frontDoorStatus=`./checkStatusDoor 17`
+backDoorStatus=`./checkStatusDoor 23`
+garageDoorStatus=`./checkStatusDoor 24`
+frontDoorStatus=`./checkStatusDoor 22`
 
 checkStatus $backDoorStatus "Back Door"
 checkStatus $garageDoorStatus "Garage Door"
 checkStatus $frontDoorStatus "Front Door"
 
 #sleep for a second
-sleep 2
+sleep 1
 done
 
