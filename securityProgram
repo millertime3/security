@@ -13,7 +13,7 @@ done < security.conf
 }
 
 function checkStatus {
-if [ "$1" = "closed" ]
+if [ "$1" = "open" ]
 then
 #sleep 2
 alarm=`./checkHostStatus`
