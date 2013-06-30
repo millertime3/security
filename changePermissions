@@ -1,6 +1,6 @@
 touch security.log
 chown pi:www-data *
 chmod 765 security.log
-touch .sendxmpprc
+cp sendxmpprc .sendxmpprc
 chown www-data:www-data .sendxmpprc
 chmod 700 .sendxmpprc

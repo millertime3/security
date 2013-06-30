@@ -1,0 +1,1 @@
+sudo echo "$1" | sendxmpp -t -u toEmail -o gmail.com -f .sendxmpprc
