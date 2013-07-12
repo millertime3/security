@@ -1,6 +1,24 @@
+rm sendGtalk
+rm .sendxmpprc
+tar -xvvf  sendxmpp_1.22.orig.tar.gz
+chown -R pi:www-data sendxmpp-1.22 
+chmod -R 755 sendxmpp-1.22
+echo "Please, enter sendxmpp userName"
+read from
+echo "Please, enter sendxmpp serverName"
+read fromserver
+echo "Please, enter password"
+read pass 
+echo Please, enter sendxmpp recevier 
+read to
 touch security.log
 chown pi:www-data *
 chmod 765 security.log
-touch .sendxmpprc
+echo "sudo echo \"\$1\" | /home/pi/security/sendxmpp-1.22/sendxmpp -t -u $from -o $fromserver  -f .sendxmpprc  $to" >> sendGtalk
+chmod 755 sendGtalk
+echo "$from@$fromserver;talk.google.com $pass $fromserver" >> /home/pi/security/.sendxmpprc
 chown www-data:www-data .sendxmpprc
 chmod 700 .sendxmpprc
+rm -r /var/www
+cd /var
+ln -s /home/pi/security/www .

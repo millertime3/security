@@ -23,7 +23,7 @@ then
 message="$2 is $1 and the alarm is on"
 echo $message
 echo `date`
-./sendGtalk "$message" &
+bash ./sendGtalk "$message" &
 fi
 fi
 }
