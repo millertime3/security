@@ -14,7 +14,7 @@ read to
 touch security.log
 chown pi:www-data *
 chmod 765 security.log
-echo "sudo echo \"\$1\" | /home/pi/security/sendxmpp-1.22/sendxmpp -t -u $from -o $fromserver  -f .sendxmpprc  $to" >> sendGtalk
+echo "echo \"\$1\" | /home/pi/security/sendxmpp-1.22/sendxmpp -t -u $from -o $fromserver  -f .sendxmpprc  $to" >> sendGtalk
 chmod 755 sendGtalk
 echo "$from@$fromserver;talk.google.com $pass $fromserver" >> /home/pi/security/.sendxmpprc
 chown www-data:www-data .sendxmpprc
