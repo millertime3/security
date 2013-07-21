@@ -1,3 +1,3 @@
 <?
-header('Location:http://garage/getCmd/garageToggleGarage.php');
+shell_exec('curl http://garage/getCmd/garageToggleGarage.php');
 ?>
