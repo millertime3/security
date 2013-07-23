@@ -75,3 +75,10 @@ function toggleGarage() {
 $.get('getCmd/toggleGarage.php',function(){
 });
 }
+
+function changeManualOverride($bool) {
+$bool = $($bool).val();
+$.get('getCmd/replaceConf.php?input=manualOverride ' + $bool,function(){
+});
+}
+

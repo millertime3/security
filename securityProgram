@@ -17,8 +17,7 @@ if [ "$1" = "open" ]
 then
 #sleep 2
 alarm=`./checkHostStatus`
-manualOverride=auto
-if [ "$manualOverride" = "true" ] || [ "$manualOverride$alarm" = "autofalse" ] 
+if [ "$manualOverride" = "true" ] || [ "$manualOverride$alarm" = "falsefalse" ] 
 then
 message="$2 is $1 and the alarm is on"
 echo $message
@@ -29,6 +28,7 @@ fi
 }
 
 #start of program
+readConf
 echo "Starting program " . `date`
 gpio export 22 in
 gpio export 23 in

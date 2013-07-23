@@ -43,11 +43,11 @@
                         <div data-role="fieldcontain">
                             <label for="selectmenu1">
                             </label>
-                            <select name="">
-                                <option value="option1">
+                            <select onChange="changeManualOverride(this)" name="">
+                                <option value="true">
                                     Turn off
                                 </option>
-                                <option value="value">
+                                <option value="false">
                                     Turn on Auto
                                 </option>
                             </select>
