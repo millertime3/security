@@ -3,7 +3,7 @@
 <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
 </head>
 <?php
-$setAlarm = $_GET["set"];
+$setAlarm = escapeshellarg($_GET["set"]);
 $cmd = "bash /home/pi/security/replaceConf manualOverride " . $setAlarm;
 
 if($setAlarm != '') {
