@@ -1,3 +1,3 @@
 <?
-shell_exec('bash /home/pi/security/replaceConf ' . $_GET['input']);
+shell_exec('bash /home/pi/security/replaceConf ' . escapeshellarg($_GET['input']));
 ?>
