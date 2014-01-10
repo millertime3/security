@@ -1,3 +1,3 @@
 <?
-echo shell_exec('gpio -g read ' . $_GET['input']);
+echo shell_exec('gpio -g read ' . escapeshellarg($_GET['input']));
 ?>
