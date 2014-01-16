@@ -1,5 +1,9 @@
 #!/bin/bash
 cd /home/pi/security/
+#start of xmpp client
+#killall python
+#./chatClient &
+
 function readConf {
 shopt -s extglob
 while IFS='= ' read lhs rhs
@@ -33,18 +37,21 @@ echo "Starting program " . `date`
 gpio export 22 in
 gpio export 23 in
 gpio export 24 in
+gpio export 18 in
 while(true)
 do
-#checkStatus BackDoor
+checkStatus BackDoor
 backDoorStatus=`./checkStatusDoor 23`
 garageDoorStatus=`./checkStatusDoor 24`
 frontDoorStatus=`./checkStatusDoor 22`
 garageBigDoorStatus=`./checkStatusRemoteDoor garage 15`
+basementDoorStatus=`./checkStatusDoor 18`
 
 checkStatus $backDoorStatus "Back Door"
 checkStatus $garageDoorStatus "Garage Door"
 checkStatus $frontDoorStatus "Front Door"
 checkStatus $garageBigDoorStatus "Big Garage Door"
+checkStatus $basementDoorStatus "Basement Door"
 
 #sleep for a second
 sleep 1
