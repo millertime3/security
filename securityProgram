@@ -39,10 +39,12 @@ do
 backDoorStatus=`./checkStatusDoor 23`
 garageDoorStatus=`./checkStatusDoor 24`
 frontDoorStatus=`./checkStatusDoor 22`
+garageBigDoorStatus=`./checkStatusRemoteDoor garage 15`
 
 checkStatus $backDoorStatus "Back Door"
 checkStatus $garageDoorStatus "Garage Door"
 checkStatus $frontDoorStatus "Front Door"
+checkStatus $garageBigDoorStatus "Big Garage Door"
 
 #sleep for a second
 sleep 1

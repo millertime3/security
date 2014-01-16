@@ -1,6 +1,5 @@
 #!/bin/bash
-gpio export $1 in
-value=`cat /sys/class/gpio/gpio$1/value`
+value=`curl -s http://$1/getCmd/lightStatus.php?input=$2`
 if(($value == "1"))
 then
 echo "open"
