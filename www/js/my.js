@@ -1,9 +1,6 @@
 // Put your custom code here
 $(document).ready(function() {
 readProgramStatus();
-checkDoorStatus('#r',17);
-checkDoorStatus('#r2',18);
-checkDoorStatus('#r3',21);
 });
 
 //define the values of the lights
@@ -58,11 +55,22 @@ $('#start').parent().hide();
 }
 });
 }
-
-function checkDoorStatus($this,$input) {
-$.get('getCmd/checkDoorStatus.php?input='+ $input,function($status){
-$($this).html($status);
-});
+var $registeredDoors = [];
+var $registeredDoorsRemote=[];
+function checkDoorStatus($id,$input,$remote) {
+	if(!($input in $registeredDoors)){
+		$registeredDoors.push($input+'');
+		$registeredDoorsRemote.push($remote+'');
+	}
+if($remote == 'false') {
+	$.get('getCmd/checkDoorStatus.php?input='+ $input,function($status){
+	$('#'+$id).html($status);
+	});
+} else {
+ $.get('getCmd/checkDoorRemoteStatus.php?host='+$remote+'&input='+ $input,function($status){
+	$('#'+$id).html($status);
+	});
+}
 }
 
 function getOutput($cmd,$id) {
@@ -81,4 +89,22 @@ $bool = $($bool).val();
 $.get('getCmd/replaceConf.php?input=manualOverride ' + $bool,function(){
 });
 }
+var $doorRealTime=false;
+function toggleRealTimeDoorCheck() {
+	$doorRealTime=!($doorRealTime);
+	$status = "off";
+	if($doorRealTime){
+		$status="on";
+	}
+	$('#doorReal').parent().find('span').html("Real Time "+ $status);
+}
+var t =	setInterval(function(){
+		if($doorRealTime) {
+		for(var i=0;i<$registeredDoors.length;i++) {
+			$input = $registeredDoors[i];
+			$remote = $registeredDoorsRemote[i];
+			checkDoorStatus('door'+$input,$input,$remote);
+		}
+		}
+	},1000);
 

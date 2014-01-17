@@ -59,41 +59,35 @@
                         <h3>
                             Door Status
                         </h3>
+<input type="button" id="doorReal" onclick="toggleRealTimeDoorCheck()" value="Real Time off"/>
+<?
+function buildDoor($input,$name,$remote) {
+return '
+
                         <div data-role="fieldcontain">
                             <fieldset data-role="controlgroup" data-type="horizontal">
                                 <legend>
-                                    Front Door
+                                    '.$name.'
                                 </legend>
                                 <input id="radio1" name="radio" value="radio1" type="radio" />
-                                <label id="r" for="radio1" onload="checkDoorStatus(this,0)">
+                                <label id="door'.$input.'" for="radio1">
                                     #
                                 </label>
                             </fieldset>
-                        </div>
-                        <div data-role="fieldcontain">
-                            <fieldset data-role="controlgroup" data-type="horizontal">
-                                <legend>
-                                    Back Door
-                                </legend>
-                                <input id="radio3" name="" value="radio1" type="radio" />
-                                <label id="r2" for="radio3">
-                                    #
-                                </label>
-                            </fieldset>
-                        </div>
-                        <div data-role="fieldcontain">
-                            <fieldset data-role="controlgroup" data-type="horizontal">
-                                <legend>
-                                    Garage Door
-                                </legend>
-                                <input id="radio4" name="" value="radio1" type="radio" />
-                                <label id="r3" for="radio4">
-                                    #
-                                </label>
-                            </fieldset>
-                        </div>
-                    </div>
-
+			</div>
+<script>
+checkDoorStatus("door'.$input.'",'.$input.',"'.$remote.'");
+</script>
+'
+;
+}
+echo buildDoor(22,'Front Door','false');
+echo buildDoor(23,'Back Door','false');
+echo buildDoor(18,'Basement Door','false');
+echo buildDoor(24,'Garage Door','false');
+echo buildDoor(15,'Big Garage Door','garage');
+?>
+		</div>
 <?
 
 function output($cmd,$title,$id) {

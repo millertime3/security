@@ -40,7 +40,6 @@ gpio export 24 in
 gpio export 18 in
 while(true)
 do
-checkStatus BackDoor
 backDoorStatus=`./checkStatusDoor 23`
 garageDoorStatus=`./checkStatusDoor 24`
 frontDoorStatus=`./checkStatusDoor 22`
