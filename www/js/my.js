@@ -7,18 +7,19 @@ readProgramStatus();
 function checkLightStatus() {
 $inputs = [7,8];
 for(i=0;i<$inputs.length;i++) {
-$input=$inputs[i];
-$.get('getCmd/lightStatus.php?input=' + $input,function($status) {
-   if($status == 1) {
-      $('#switch' + $input).val('on');
-      $('#switch' + $input).mouseup();
-   }
-});
+getStatus($inputs[i]);
 }
-
-$('#switch8').val('on');
-$('#switch8').mouseup();
-$('#switch7').val('off');
+}
+function getStatus($input) {
+$.get('getCmd/lightStatus.php?input=' + $input,function($status) {
+        $l = $('#switch' + $input);
+	if($status.trim() == '1') {
+		$l.val('on');
+	} else {
+		$l.val('off');
+	}
+	$l.mouseup()
+});
 }
 
 //turn lights on and off
